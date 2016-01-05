@@ -1,0 +1,89 @@
+/**   
+* @Title: XmlUtil.java 
+* @Package com.vrv.cems.service.updownload.util 
+* @Description: TODO(用一句话描述该文件做什么) 
+* @author tangtieqiao
+		   tangtieqiao@vrvmail.com.cn
+* @date 2015年9月2日 下午4:31:15 
+* @version V1.0   
+*/
+package com.vrv.cems.service.updownload.util;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+
+import com.vrv.cems.service.local.UpLoadFile;
+
+/** 
+ * @ClassName: XmlUtil 
+ * @Description: TODO(这里用一句话描述这个类的作用) 
+ * @author tangtieqiao
+			tangtieqiao@vrvmail.com.cn
+ * @date 2015年9月2日 下午4:31:15 
+ *  
+ */
+public class XmlUtil {
+
+	/**
+	 * @Title: toFileNode
+	 * @Description: TODO(这里用一句话描述这个方法的作用)
+	 * @param @param pat
+	 * @param @param root 参数说明
+	 * @return void 返回类型
+	 * @throws
+	 */
+	public static void toFileNode(UpLoadFile pat, Element root) {
+		Element ele = root.addElement("file");
+		ele.addElement("id").addText(pat.getId());
+		ele.addElement("name").addText(pat.getName());
+		ele.addElement("crc").addText(pat.getCrc());
+		ele.addElement("url").addText(pat.getUrl());
+		ele.addElement("path").addText(pat.getPath());
+	}
+	
+	
+	private static void updateIndexXML(UpLoadFile pat, String temp)
+			throws Exception {
+		Document doc = null;
+		try {
+			SAXReader sr = new SAXReader();// 获取读取xml的对象。
+			doc = sr.read(temp);
+			Element filesElement = doc.getRootElement();// 向外取数据，获取xml的根节点
+			toFileNode(pat, filesElement);
+
+		} catch (DocumentException e) {
+			doc = DocumentHelper.createDocument();
+			doc.setXMLEncoding("utf-8");
+			Element root = doc.addElement("files");
+			toFileNode(pat, root);
+		} finally {
+			writeXML(temp, doc);
+		}
+
+	}
+	
+	
+	public static void writeXML(String temp, Document doc)
+			throws FileNotFoundException, UnsupportedEncodingException,
+			IOException {
+		FileOutputStream fos = new FileOutputStream(temp);
+		OutputFormat outputFormat = OutputFormat.createPrettyPrint();
+		OutputStreamWriter osw = new OutputStreamWriter(fos, "utf-8");
+		XMLWriter writer = new XMLWriter(osw, outputFormat);
+		writer.write(doc);
+		writer.flush();
+		writer.close();
+	}
+
+}

@@ -1,0 +1,43 @@
+package com.vrv.cems.service.updownload; 
+
+import java.io.IOException;
+
+import org.apache.http.HttpResponse;
+import org.junit.Test;
+
+import com.vrv.cems.service.base.interfaces.IUpdownloadService;
+import com.vrv.cems.service.base.util.ByteBufferUtils;
+import com.vrv.cems.service.base.util.HttpClientUtils;
+
+/** 
+ *   <B>说       明</B>:
+ *
+ * @author  作  者  名：daiyijun<br/>
+ *		    E-mail ：daiyijun@vrvmail.com.cn
+ 
+ * @version 版   本  号：V1.0.<br/>
+ *          创建时间：2015年4月17日 下午1:51:58 
+ */
+public class CUpGradeServiceProcessTest {
+	@Test
+	public void test() throws IllegalStateException, IOException{
+		String data = "{maxCode:'00010700',"
+		 		+ "minCode:'4',"
+		 		+ "fdfsPath:'g1/M00/AE/25/wKgAC1TL7BSAIjo6AA0h6ki0K1g294.zip',"
+		 		+ "fileName:'commons-fileupload-1.3-bin.zip',"
+		 		+ "crc:'28ddeea0',"
+		 		+ "packType:'cUpgrade',"
+		 		+ "productType:'vdp',"
+		 		+ "osType:'windows',"
+		 		+ "version:'3.0.25',"
+		 		+ "type:'0',"
+		 		+ "range:'<exeObj-config><devOrgObj><execute>2:0,2:0,3:2</execute></devOrgObj><ipRangeObj><execute>192.168.32.1-192.168.32.100,192.168.32.122,192.168.32.125-192.168.32.222</execute></ipRangeObj></exeObj-config>',"
+		 		+ "}";
+		
+		HttpResponse connect = HttpClientUtils.connect("http://172.0.0.1:8080/CEMS-SERVICE-UPDOWNLOAD/udload?maxCode="+
+				IUpdownloadService.SERVICE_CODE+"&minCode="+IUpdownloadService.UPGRADE_INFO, 
+				ByteBufferUtils.string2ByteBuffer(data));
+		System.out.println(ByteBufferUtils.inputStream2ByteArray(connect.getEntity().getContent()));
+	}
+}
+ 

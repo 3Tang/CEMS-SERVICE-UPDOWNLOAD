@@ -1,0 +1,190 @@
+/**   
+ * @Title: UpFileTestServlet.java 
+ * @Package com.vrv.cems.service.updownload.servlet 
+ * @Description: TODO(用一句话描述该文件做什么) 
+ * @author tangtieqiao
+		   tangtieqiao@vrvmail.com.cn
+ * @date 2015年8月25日 下午4:30:19 
+ * @version V1.0   
+ */
+package com.vrv.cems.service.updownload.servlet;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONArray;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+
+import com.sys.common.util.UUIDUtils;
+import com.sys.common.util.json.JsonUtils;
+import com.sys.common.util.path.FilePathSegmentPolicy;
+import com.vrv.cems.service.base.bean.ResultMsgBean;
+import com.vrv.cems.service.base.interfaces.IBlockService;
+import com.vrv.cems.service.base.interfaces.IUpdownloadService;
+import com.vrv.cems.service.updownload.*;
+import com.vrv.cems.service.updownload.bean.RequestBean;
+import com.vrv.cems.service.updownload.bean.UpFileBean;
+import com.vrv.cems.service.updownload.util.CommomThreadPool;
+import com.vrv.cems.service.updownload.util.DirUtil;
+import com.vrv.cems.service.updownload.util.FileUtil;
+
+/**
+ * @ClassName: UpFileTestServlet
+ * @Description: TODO(这里用一句话描述这个类的作用)
+ * @author tangtieqiao tangtieqiao@vrvmail.com.cn
+ * @date 2015年8月25日 下午4:30:19
+ * 
+ */
+public class UpFileTestServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger
+			.getLogger(UpFileTestServlet.class);
+
+	/**
+	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
+	 */
+	private static final long serialVersionUID = 3029474455593490550L;
+
+	@Override
+	protected void service(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// 参数初始化
+		UpFileBean upFileBean = null;
+		String urlMaxCode = "";
+		String urlMinCode = "";
+		String minCode = "";
+		String data = "";
+		byte[] fileData = null;
+		ResultMsgBean result = new ResultMsgBean(
+				IUpdownloadService.SERVICE_CODE, minCode);
+
+		LOGGER.info("1,进入UpFileTestServlet的service方法");
+
+		FileItemFactory factory = new DiskFileItemFactory();
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		try {
+			List items = upload.parseRequest(request);
+			Iterator iter = items.iterator();
+			while (iter.hasNext()) {
+				FileItem item = (FileItem) iter.next();
+				if (item.isFormField()) {
+					// 获取前台的参数
+					if ("maxCode".equals(item.getFieldName())) {
+						urlMaxCode = item.getString();
+
+					}
+					if ("minCode".equals(item.getFieldName())) {
+						urlMinCode = item.getString();
+					}
+					if ("data".equals(item.getFieldName())) {
+						data = item.getString();
+					}
+
+				} else {
+					// 上传文件信息处理
+					String fileName = item.getName();
+					fileData = item.get();
+				}
+			}
+		} catch (FileUploadException e) {
+			e.printStackTrace();
+		}
+
+		// 获取URL中的MaxCode
+		urlMaxCode = request.getParameter("maxCode");
+		// 判断maxCode是否为空
+		if (StringUtils.isBlank(urlMaxCode)) {
+			LOGGER.error("MaxCode ERROR ：[MaxCode is null]");
+			response.getWriter().print("MaxCode ERROR ：[MaxCode is null]");
+			return;
+		}
+		//验证maxCode和minCode
+		if (urlMaxCode.equals(IUpdownloadService.SERVICE_CODE)) {	
+			if (minCode.equals(IUpdownloadService.UPGRADE_INFO)) {
+				if(StringUtils.isNotBlank(data)){
+					upFileBean = JsonUtils.json2Object(data, UpFileBean.class);
+				}
+				String clientUpFileType = FileUtil.getFileType(upFileBean
+						.getFileName());
+				FilePathSegmentPolicy filePathSegmentPolicy = FilePathSegmentPolicy.NUMBER_LETTER;
+				String dirName = filePathSegmentPolicy.creatPathSegment();
+				FileUtil.createDir(dirName);
+				String uuid = UUIDUtils.get32UUID();
+				String storeFileName = dirName + File.separator + uuid
+						+ clientUpFileType;
+				FileUtil.createFile(storeFileName);
+				boolean fileReceice = false;
+				try {
+					PrintStream pw = new PrintStream(new BufferedOutputStream(
+							new FileOutputStream(storeFileName)));
+					pw.write(fileData);
+					pw.close();
+					fileReceice = true;
+					LOGGER.info("文件生成成功");
+					
+					//文件生成之后 要写xml文件
+					String temp = DirUtil.getAppDir()+ "/updownService/index.xml";
+					File file = new File(temp);
+					if(!file.exists())
+					{
+						FileUtil.createFile(temp);
+					}
+					
+					
+				} catch (Exception e) {
+					LOGGER.error("文件生成失败，请查看后台日志" + e.getMessage());
+
+				}
+
+				//
+				if (fileReceice) {
+					CommomThreadPool.joinThreadPool(new Runnable() {
+						public void run() {
+
+						}
+					});
+
+				}// 请求在线服务失败的处理(根据失败类型进行不同处理)
+
+				// result.setJdata(JSONArray.fromObject("[{\"crc\":\""+crc+"\",\"size\":\""+size+"\",\"ipList\":"+ips+"}]"));
+				response.getWriter().write(result.toJson());
+
+			} else {
+				try {
+					LOGGER.error("MinCode:" + minCode + "不存在");
+
+					result.setDesc("MinCode:" + minCode + "不存在");
+					result.setResult("1");
+					response.getWriter().write(result.toJson());
+
+				} catch (IOException e) {
+					LOGGER.error("返回信息报错!", e);
+				}
+			}
+
+		}
+	}
+
+}

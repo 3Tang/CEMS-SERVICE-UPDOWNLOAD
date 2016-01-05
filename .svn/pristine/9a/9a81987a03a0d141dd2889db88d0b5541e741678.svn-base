@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 服务策略 -->
+<root>
+	<!-- 日志配置--> 
+	<logBean logLevel="INFO,CONSOLE,FILE" logPath="../logs/Sys.log" />
+	
+	<!-- 服务自身配置-->
+	<params> 
+		<!--只需配一个根路径:temp/cems/-->
+		<paramBean key="file_path_pre" value="temp/cems"></paramBean> 
+		<!-- #记录策略文件在FTP文件服务器的位置;文件内容包含索引文件的CRC及索引文件在FastDFS服务器的路径 -->
+		<paramBean key="policy_path_pre" value="/cems/policy/update-policy.crc"></paramBean>
+	</params>
+	
+	<!-- 定时器配置-->
+	<timers>
+		<!--获取升级索引信息定时器配置-->
+		<timerBean>
+			<name>cUpGradeIndexTask</name><!--定时器名称-->
+			<group>DEFAULT</group>
+			<trigger>cUpGradeIndexTrigger</trigger>
+			<cycle>0 0/7 * * * ?</cycle><!--定时器执行周期-->
+		</timerBean>
+		<!--获取补丁索引信息定时器配置-->
+		<timerBean>
+			<name>patchIndexTask</name><!--定时器名称-->
+			<group>DEFAULT</group>
+			<trigger>patchTrigger</trigger>
+			<cycle>0 0/9 * * * ?</cycle><!--定时器执行周期-->
+		</timerBean>
+		<!--获取策略索引信息定时器配置-->
+		<timerBean>
+			<name>policyIndexTask</name><!--定时器名称-->
+			<group>DEFAULT</group>
+			<trigger>policyTrigger</trigger>
+			<cycle>0/11 * * * * ?</cycle><!--定时器执行周期-->
+		</timerBean>
+		<timerBean>
+			<name>updatePolicyXMLTask</name><!--定时器名称-->
+			<group>DEFAULT</group>
+			<trigger>updatePolicyXMLTrigger</trigger>
+			<cycle>0/20 * * * * ?</cycle><!--定时器执行周期-->
+		</timerBean>
+	</timers>
+</root>

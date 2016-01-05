@@ -1,0 +1,276 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false" name="cupgradeCache">
+         <diskStore path="C:/VRV/CEMS-SERVICE-UPDOWNLOAD/cache"/>
+         <cache name="indexCrc"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="4"
+         		diskSpoolBufferSizeMB="1"
+         		maxEntriesLocalHeap="4"> 
+         </cache>
+         <cache name="cupgradeindex_single_1"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="10"
+         		diskSpoolBufferSizeMB="7"
+         		maxEntriesLocalHeap="10"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="cupgradeindex_single_2"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="10"
+         		diskSpoolBufferSizeMB="7"
+         		maxEntriesLocalHeap="10"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="cupgradeindex_single_3"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="10"
+         		diskSpoolBufferSizeMB="7"
+         		maxEntriesLocalHeap="10"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="cupgradeindex_single_4"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="10"
+         		diskSpoolBufferSizeMB="7"
+         		maxEntriesLocalHeap="10"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="cupgradeindex_single_0"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="10"
+         		diskSpoolBufferSizeMB="7"
+         		maxEntriesLocalHeap="10"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="cupgradeindex_double_0"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="10"
+         		diskSpoolBufferSizeMB="7"
+         		maxEntriesLocalHeap="10"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="cupgradeindex_double_1"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="10"
+         		diskSpoolBufferSizeMB="7"
+         		maxEntriesLocalHeap="10"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="cupgradeindex_double_2"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="10"
+         		diskSpoolBufferSizeMB="7"
+         		maxEntriesLocalHeap="10"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="cupgradeindex_double_3"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="10"
+         		diskSpoolBufferSizeMB="7"
+         		maxEntriesLocalHeap="10"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="cupgradeindex_double_4"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="10"
+         		diskSpoolBufferSizeMB="7"
+         		maxEntriesLocalHeap="10"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         
+         <!-- patch_cache  -->
+         <cache name="patchindex_1"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="30"
+         		diskSpoolBufferSizeMB="6"
+         		maxEntriesLocalHeap="30"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="patchindex_2"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="30"
+         		diskSpoolBufferSizeMB="6"
+         		maxEntriesLocalHeap="30"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="patchindex_3"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="30"
+         		diskSpoolBufferSizeMB="6"
+         		maxEntriesLocalHeap="30"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="patchindex_4"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="30"
+         		diskSpoolBufferSizeMB="6"
+         		maxEntriesLocalHeap="30"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="patchindex_5"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="30"
+         		diskSpoolBufferSizeMB="6"
+         		maxEntriesLocalHeap="30"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="patchindex_6"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="30"
+         		diskSpoolBufferSizeMB="6"
+         		maxEntriesLocalHeap="30"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="patchindex_7"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="30"
+         		diskSpoolBufferSizeMB="6"
+         		maxEntriesLocalHeap="30"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="patchindex_8"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="30"
+         		diskSpoolBufferSizeMB="6"
+         		maxEntriesLocalHeap="30"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="patchindex_9"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="30"
+         		diskSpoolBufferSizeMB="6"
+         		maxEntriesLocalHeap="30"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+         <cache name="patchindex_0"
+         		diskPersistent="true" 
+         	    overflowToDisk="true" 
+         	    eternal="true"
+         	    maxElementsOnDisk="0"
+         	    memoryStoreEvictionPolicy="LFU" 
+         		maxElementsInMemory="30"
+         		diskSpoolBufferSizeMB="6"
+         		maxEntriesLocalHeap="30"> 
+         			<bootstrapCacheLoaderFactory
+						class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" 
+						properties="bootstrapAsynchronously=true"/>
+         </cache>
+</ehcache>

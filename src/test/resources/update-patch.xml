@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<files>
+	<file>
+		<name>jd-gui.exe</name>
+		<crc>41eb22e</crc>
+		<url>g1/M00/BB/D7/wKgAGFTL5MeAIxAiAAxaAIp0Bfc443.exe</url>
+		<path>patch/index/jd-gui.exe</path>
+	</file>
+	<file>
+		<name>PackIndex.ocx</name>
+		<crc>fa27fd35</crc>
+		<url>g2/M00/9F/29/wKgADVTL5C-AIYQtAAABP03sAIk045.cfg</url>
+		<path>patch/index/PackIndex.ocx</path>
+	</file>
+	<file>
+		<name>VrvCtl.ocx</name>
+		<crc>9e7fd3a0</crc>
+		<url>g2/M01/2E/23/wKgADVTL5IKAGeo0AAbgAHQCiqw064.ocx</url>
+		<path>patch/file/VrvCtl.ocx</path>
+	</file>
+</files>

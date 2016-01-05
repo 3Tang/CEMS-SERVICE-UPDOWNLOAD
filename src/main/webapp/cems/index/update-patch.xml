@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<files>
+	<file>
+		<name>PackIndex.dat</name>
+		<crc>691db6ea</crc>
+		<url>g2/M01/F0/81/wKgADVS4Js6AViqvADtTtuNZph8736.dat</url>
+		<path>patch/index/PackIndex.dat</path>
+	</file>
+	<file>
+		<name>pacthindex.xml</name>
+		<crc>691db6ea</crc>
+		<url>g2/M01/F0/81/wKgADVS4Js6AViqvADtTtuNZph8736.xml</url>
+		<path>patch/index/pacthindex.xml</path>
+	</file>
+	<file>
+		<name>873374_AU_CHS_fb28b1299cef285de192f22bec0e736.EXE</name>
+		<crc>691db6ea</crc>
+		<url>g2/M01/F0/81/wKgADVS4Js6AViqvADtTtuNZph8736.EXE</url>
+		<path>patch/file/873374_AU_CHS_fb28b1299cef285de192f22bec0e736.EXE</path>
+	</file>
+	<file>
+		<name>PatchPackage12.dat</name>
+		<crc>691db6ea</crc>
+		<url>g2/M01/F0/81/wKgADVS4Js6AViqvADtTtuNZph8736.dat</url>
+		<path>patch/index/PatchPackage12.dat</path>
+	</file>
+</files>

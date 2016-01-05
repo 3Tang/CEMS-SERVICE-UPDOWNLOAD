@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<files> 
+  <file> 
+    <id>cb71b4a1c6ed4dfbbdbce53e92b41730</id>  
+    <name>test.zip</name>  
+    <crc>1A2B3C4D</crc>  
+    <url/>  
+    <path>x/y</path> 
+  </file>  
+  <file>
+    <id>1231325</id>
+    <name>next</name>
+    <crc>93849238</crc>
+    <url>www.baidu</url>
+    <path>dd/uu</path>
+  </file>
+</files>

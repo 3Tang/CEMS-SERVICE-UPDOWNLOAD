@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<files>
+	<file>
+		<name>CEMS2.zip</name>
+		<crc>41ea4d72</crc>
+		<url>g2/M00/88/85/wKgADVTH1NyAaqY1Br_9xWV_I6A807.zip</url>
+		<range>&lt;exeObj-config&gt;&lt;devOrgObj&gt;&lt;execute&gt;0000005:0,0000002:0,0000003:2&lt;/execute&gt;&lt;/devOrgObj&gt;&lt;ipRangeObj&gt;&lt;execute&gt;192.168.32.1-192.168.32.100,192.168.32.122,192.168.32.125-192.168.32.222&lt;/execute&gt;&lt;out&gt;192.168.66.1-192.168.32.88,192.168.32.188&lt;/out&gt;&lt;/ipRangeObj&gt;&lt;/exeObj-config&gt;</range>
+		<path>/cUpgrade/base/print/windows/CEMS2.zip</path>
+	</file>
+	<file>
+		<name>CEMS1.zip</name>
+		<crc>41ea4d72</crc>
+		<url>g2/M00/88/85/wKgADVTH1NyAaqY1Br_9xWV_I6A807.zip</url>
+		<range>&lt;exeObj-config&gt;&lt;devOrgObj&gt;&lt;execute&gt;0000001:0,0000002:0,0000003:2&lt;/execute&gt;&lt;/devOrgObj&gt;&lt;ipRangeObj&gt;&lt;execute&gt;192.168.32.1-192.168.32.100,192.168.32.122,192.168.32.125-192.168.32.222&lt;/execute&gt;&lt;out&gt;192.168.66.1-192.168.32.88,192.168.32.188&lt;/out&gt;&lt;/ipRangeObj&gt;&lt;/exeObj-config&gt;</range>
+		<path>cUpgrade/base/print/windows/CEMS1.zip</path>
+	</file>
+</files>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+
+	<display-name>CEMS SERVICE UPDOWNLOAD 上传下载服务</display-name>
+	<!-- 启动注册 机制 -->
+	<listener>
+		<listener-class>com.vrv.cems.service.updownload.web.listener.SystemInitListener</listener-class>
+	</listener>  
+	<!-- 启动注册 机制 -->
+	<listener>
+		<listener-class>ccom.vrv.cems.service.updownload.web.listener.ContextDestroyListener</listener-class>
+	</listener>  
+ 	<!-- 启动缓存 管理 器 -->
+ 	<listener>
+ 		<listener-class>com.vrv.cems.service.updownload.web.listener.EhcacheListener</listener-class>
+ 	</listener>
+ 	<!-- 编码过滤器-->
+ 	<filter>
+ 		<filter-name>encodeFilter</filter-name>
+ 		<filter-class>com.vrv.cems.service.updownload.web.filter.ParseFilter</filter-class>
+ 	</filter>
+ 	<filter-mapping>
+ 		<filter-name>encodeFilter</filter-name>
+ 		<servlet-name>udLoad</servlet-name>
+ 	</filter-mapping>
+ 	<servlet>
+        <servlet-name>udLoad</servlet-name>
+        <servlet-class>com.vrv.cems.service.updownload.servlet.UpLoad</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+    	<servlet-name>udLoad</servlet-name>
+    	<url-pattern>/udload</url-pattern>
+    </servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

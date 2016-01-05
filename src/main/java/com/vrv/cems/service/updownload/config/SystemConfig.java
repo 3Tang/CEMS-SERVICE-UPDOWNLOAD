@@ -1,0 +1,50 @@
+package com.vrv.cems.service.updownload.config; 
+ 
+
+/** 
+ *   <B>说       明</B>:
+ *
+ * @author  作  者  名：daiyijun<br/>
+ *		    E-mail ：daiyijun@vrvmail.com.cn
+ 
+ * @version 版   本  号：V1.0.<br/>
+ *          创建时间：2015年4月17日 下午5:19:40 
+ */
+public class SystemConfig {
+	public static String getConfigPath(){
+		return SystemConfig.class.getClassLoader().getResource( "config.properties" ).getPath() ;
+	}
+	
+	
+	
+	private static volatile String rootPath="/cems" ;
+	private static volatile String policyFtpPath;
+	
+	public static String getCupgradePathPre(){
+		return rootPath+"/";
+	}
+	public static String getPatchPathPre(){
+		return rootPath+"/patch/";
+	}
+	public static String getPolicyPathPre(){
+		return rootPath+"/policy/";
+	}
+	
+	public static String getIndexPathPre(){
+		return rootPath+"/index/";
+	}
+	
+	
+	public static void setRootPath(String rootPath) {
+		SystemConfig.rootPath = rootPath;
+	}
+	public static String getPolicyFtpPath() {
+		return policyFtpPath;
+	}
+	public static void setPolicyFtpPath(String policyFtpPath) {
+		SystemConfig.policyFtpPath = policyFtpPath;
+	}
+	
+	
+}
+ 

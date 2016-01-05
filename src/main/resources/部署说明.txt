@@ -1,0 +1,25 @@
+================部置 前 请更改以下配置================
+1、修改  config.properties 文件，涉及如下属性：
+
+	a、file.rootPath 
+	
+2、修改cupgradeCache_ehcache.xml 文件 ，按以下步骤进行修改
+
+	a、查找diskStore标签，修改path属性
+	
+3、修改patchCache_ehcache.xml 文件 ，按以下步骤进行修改
+
+	a、查找diskStore标签，修改path属性
+		
+4、修ploicy.xml 文件，涉及所有属性
+	
+5、部署时关闭 Tomcat 热部署机制
+	a、修改server.xml文件 ，将Context标签的reloadable属性改为false 
+
+================注意======================
+程序关闭时，请按正常流程关闭tomcat服务器，因为该服务有一部分的数据
+在内存中， 服务监听了tomcat服务的启动、关闭事件。会在关闭时将内存中的数据
+持久化到文件中。	
+============目前尚未实现================
+1、根据 devonlyid 计算出 org 及ip ，以便 后续判断 客户端是否能下载或获取文件信息
+2、解ServicePortConfig.CUPGRADE_MAXCODE ，ServicePortConfig.CUPGRADE_FILEINFO_MINCODE的具体值(已解决) 
